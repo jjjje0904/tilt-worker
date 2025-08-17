@@ -1,0 +1,8 @@
+{
+  "average_abs_tilt_deg": 2.31,
+  "average_signed_tilt_deg": -1.89,
+  "used_frame_count": 329,
+  "total_frame_count": 330,
+  "threshold_deg": 3.0,
+  "possible_parkinson": false
+}
