@@ -3,7 +3,7 @@ services:
     container_name: tilt-worker
     build:
       context: .
-      dockerfile: tilt_worker/Dockerfile
+      dockerfile: Dockerfile 
     ports:
       - "9500:9500"
     env_file:
