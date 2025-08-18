@@ -1,0 +1,13 @@
+services:
+  tilt-worker:
+    container_name: tilt-worker
+    build:
+      context: .
+      dockerfile: tilt_worker/Dockerfile
+    ports:
+      - "9500:9500"
+    env_file:
+      - .env
+    volumes:
+      - /var/pks-uploads/videos:/var/pks-uploads/videos:rw
+    restart: unless-stopped
