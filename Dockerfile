@@ -29,4 +29,4 @@ EXPOSE 9500
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
  CMD curl -fsS http://localhost:9500/health || exit 1
 
-CMD ["uvicorn", "tilt_worker.src.api.main:app", "--host", "0.0.0.0", "--port", "9500", "--workers", "1"]
+CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "9500", "--workers", "1"]

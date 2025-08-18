@@ -1,5 +1,5 @@
 import argparse
-from tilt_worker.src.pipelines.tilt_pipeline import process_video
+from src.pipelines.tilt_pipeline import process_video
 
 def main():
     ap = argparse.ArgumentParser(description="Tilt Worker Runner")

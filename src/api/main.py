@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from pathlib import Path
 import os
 
-from tilt_worker.src.pipelines.tilt_pipeline import process_video
+from src.pipelines.tilt_pipeline import process_video
 
 app = FastAPI(title="Tilt Worker API")
 BASE_DIR = Path(os.getenv("UPLOADS_DIR", "/var/pks-uploads/videos")).resolve()
