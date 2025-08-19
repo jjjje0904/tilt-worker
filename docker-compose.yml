@@ -3,11 +3,16 @@ services:
     container_name: tilt-worker
     build:
       context: .
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
     ports:
       - "9500:9500"
     env_file:
       - .env
     volumes:
       - /var/pks-uploads/videos:/var/pks-uploads/videos:rw
-    restart: unless-stopped
+    networks:
+      - pks-net
+networks:
+  pks-net:
+    external: true
+

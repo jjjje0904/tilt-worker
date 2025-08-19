@@ -3,12 +3,14 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pathlib import Path
 import os
+import traceback
+import logging
 
 from src.pipelines.tilt_pipeline import process_video
 
 app = FastAPI(title="Tilt Worker API")
 BASE_DIR = Path(os.getenv("UPLOADS_DIR", "/var/pks-uploads/videos")).resolve()
-
+logger = logging.getLogger(__name__)
 class AnalyzeReq(BaseModel):
     video_id: str 
     threshold: float = 3.0
@@ -35,4 +37,6 @@ def analyze(req: AnalyzeReq):
         result = process_video(str(candidate), threshold_deg=req.threshold)
         return {"status": "ok", "result": result}
     except Exception as e:
+        logger.error("process_video failed:\n%s", traceback.format_exc())
         raise HTTPException(500, f"analyze failed: {e}")
+    

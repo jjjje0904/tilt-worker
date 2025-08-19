@@ -13,7 +13,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app \
-    OPENCV_LOG_LEVEL=ERROR 
+    OPENCV_LOG_LEVEL=ERROR
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -29,4 +29,4 @@ EXPOSE 9500
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
  CMD curl -fsS http://localhost:9500/health || exit 1
 
-CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "9500", "--workers", "1"]
+CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "9500", "--workers", "1", "--log-level", "debug"]

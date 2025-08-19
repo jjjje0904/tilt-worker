@@ -2,7 +2,7 @@ import argparse
 from src.pipelines.tilt_pipeline import process_video
 
 def main():
-    ap = argparse.ArgumentParser(description="Tilt Worker Runner")
+    ap = argparse.ArgumentParser()
     ap.add_argument("--video", required=True)
     ap.add_argument("--threshold", type=float, default=3.0)
     # 십자가 스케일 옵션
@@ -15,7 +15,7 @@ def main():
     ap.add_argument("--no-savgol", action="store_true")
     args = ap.parse_args()
 
-    result = process_video(
+    result =  process_video(
         args.video,
         threshold_deg=args.threshold,
         do_median=not args.no_median,
